@@ -1,0 +1,2838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Yussuf AbdulRahmon — Aspiring Web Developer, Web Designer and Graphics Designer">
+<title>Yussuf AbdulRahmon | Developer Portfolio</title>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root{
+    --bg:#06070d;
+    --bg2:#0b0d18;
+    --card:rgba(255,255,255,.055);
+    --card2:rgba(255,255,255,.08);
+    --text:#f7f8ff;
+    --muted:#a9aec2;
+    --accent:#8b5cf6;
+    --accent2:#22d3ee;
+    --border:rgba(255,255,255,.11);
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(139,92,246,.16),transparent 28%),
+        radial-gradient(circle at 85% 25%,rgba(34,211,238,.12),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    line-height:1.6;
+}
+
+body.light{
+    --bg:#f5f7ff;
+    --bg2:#ffffff;
+    --card:rgba(0,0,0,.045);
+    --card2:rgba(0,0,0,.07);
+    --text:#101322;
+    --muted:#5d6475;
+    --border:rgba(0,0,0,.1);
+    --shadow:0 25px 70px rgba(40,45,80,.15);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* LOADER */
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#05060b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.6s;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-box{
+    text-align:center;
+}
+
+.loader-logo{
+    width:70px;
+    height:70px;
+    border-radius:22px;
+    margin:auto;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    font-size:25px;
+    font-weight:900;
+    box-shadow:0 0 50px rgba(139,92,246,.4);
+}
+
+.loader-line{
+    width:160px;
+    height:3px;
+    margin:20px auto 0;
+    overflow:hidden;
+    background:#222;
+    border-radius:20px;
+}
+
+.loader-line span{
+    display:block;
+    width:50%;
+    height:100%;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    animation:loading 1s infinite;
+}
+
+@keyframes loading{
+    from{transform:translateX(-100%)}
+    to{transform:translateX(300%)}
+}
+
+/* BACKGROUND */
+.grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    opacity:.22;
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(70px);
+    pointer-events:none;
+    z-index:-2;
+    opacity:.2;
+}
+
+.orb.one{
+    width:350px;
+    height:350px;
+    background:var(--accent);
+    top:10%;
+    left:-150px;
+}
+
+.orb.two{
+    width:300px;
+    height:300px;
+    background:var(--accent2);
+    right:-130px;
+    top:40%;
+}
+
+/* NAVBAR */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    backdrop-filter:blur(20px);
+    background:rgba(5,6,12,.68);
+    border-bottom:1px solid var(--border);
+}
+
+body.light header{
+    background:rgba(255,255,255,.72);
+}
+
+.nav{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-weight:900;
+    font-size:19px;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:white;
+    box-shadow:0 0 25px rgba(139,92,246,.3);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.nav-links a{
+    padding:10px 13px;
+    color:var(--muted);
+    border-radius:12px;
+    transition:.25s;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:var(--text);
+    background:var(--card);
+}
+
+.nav-actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    color:var(--text);
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    padding-top:120px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:70px;
+    align-items:center;
+}
+
+.badge{
+    width:max-content;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 13px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:50px;
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.badge-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#32e6a1;
+    box-shadow:0 0 12px #32e6a1;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin-bottom:22px;
+}
+
+.gradient-text{
+    background:linear-gradient(100deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-role{
+    font-size:clamp(15px,2vw,20px);
+    font-weight:700;
+    letter-spacing:1px;
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:650px;
+    color:var(--muted);
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:48px;
+    padding:0 19px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    cursor:pointer;
+    transition:.25s;
+    font-weight:700;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-primary{
+    color:white;
+    border:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 15px 40px rgba(139,92,246,.22);
+}
+
+.btn-secondary{
+    background:var(--card);
+    color:var(--text);
+}
+
+/* PROFILE */
+.profile-wrap{
+    position:relative;
+    display:flex;
+    justify-content:center;
+}
+
+.profile-ring{
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    padding:10px;
+    background:conic-gradient(
+        from 0deg,
+        var(--accent),
+        var(--accent2),
+        transparent,
+        var(--accent)
+    );
+    animation:spin 8s linear infinite;
+    box-shadow:0 0 90px rgba(139,92,246,.18);
+}
+
+.profile-inner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:var(--bg2);
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    animation:counterspin 8s linear infinite;
+}
+
+.profile-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    color:var(--muted);
+    background:
+        radial-gradient(circle at 50% 30%,rgba(139,92,246,.22),transparent 35%),
+        linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+}
+
+.profile-placeholder strong{
+    font-size:72px;
+    line-height:1;
+    color:var(--text);
+}
+
+.profile-placeholder span{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.profile-floating{
+    position:absolute;
+    padding:13px 16px;
+    border:1px solid var(--border);
+    background:rgba(15,17,30,.8);
+    backdrop-filter:blur(15px);
+    border-radius:15px;
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:13px;
+}
+
+body.light .profile-floating{
+    background:rgba(255,255,255,.8);
+}
+
+.float-one{
+    left:0;
+    bottom:30px;
+}
+
+.float-two{
+    right:0;
+    top:35px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+@keyframes counterspin{
+    to{transform:rotate(-360deg)}
+}
+
+/* SECTIONS */
+section{
+    padding:110px 0;
+}
+
+.section-head{
+    margin-bottom:45px;
+}
+
+.eyebrow{
+    color:var(--accent2);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.section-head h2{
+    font-size:clamp(32px,5vw,52px);
+    letter-spacing:-2px;
+}
+
+.section-head p{
+    color:var(--muted);
+    max-width:680px;
+    margin-top:12px;
+}
+
+/* ABOUT */
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.glass{
+    border:1px solid var(--border);
+    background:var(--card);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+}
+
+.about-card{
+    padding:30px;
+}
+
+.about-card h3{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.about-card p{
+    color:var(--muted);
+}
+
+.education{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:20px;
+}
+
+.edu-item{
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:rgba(255,255,255,.025);
+}
+
+.edu-item strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+.edu-item span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* PERSONAL INFORMATION */
+.personal-section{
+    margin-top:20px;
+}
+
+.personal-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.personal-title .title-icon{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:white;
+}
+
+.personal-title h3{
+    font-size:24px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.info-card{
+    padding:21px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:18px;
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--accent);
+    box-shadow:0 15px 40px rgba(139,92,246,.1);
+}
+
+.info-icon{
+    min-width:44px;
+    width:44px;
+    height:44px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    color:var(--accent2);
+    background:rgba(34,211,238,.09);
+}
+
+.info-card small{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:3px;
+}
+
+.info-card strong{
+    font-size:14px;
+    word-break:break-word;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service{
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    border-color:rgba(139,92,246,.5);
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(34,211,238,.13));
+    color:var(--accent2);
+    margin-bottom:20px;
+}
+
+.service h3{
+    margin-bottom:9px;
+}
+
+.service p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* SKILLS */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.skill{
+    padding:21px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.skill-icon{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    color:var(--accent);
+    background:rgba(139,92,246,.1);
+}
+
+.skill-text strong{
+    display:block;
+    margin-bottom:2px;
+}
+
+.skill-text span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.project{
+    overflow:hidden;
+    transition:.35s;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:rgba(139,92,246,.5);
+}
+
+.project-visual{
+    height:250px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+}
+
+.project-body{
+    padding:25px;
+}
+
+.project-body h3{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.project-body p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin:17px 0;
+}
+
+.tag{
+    font-size:11px;
+    padding:6px 9px;
+    border-radius:8px;
+    color:var(--muted);
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
+}
+
+.project-actions{
+    display:flex;
+    gap:9px;
+}
+
+/* CALCULATOR VISUAL */
+.calc-ui{
+    position:absolute;
+    width:220px;
+    height:190px;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+    background:rgba(10,11,22,.8);
+    padding:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.calc-screen{
+    height:42px;
+    border-radius:9px;
+    background:#11152a;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding:10px;
+    color:#9be8ff;
+    font-size:18px;
+}
+
+.calc-buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+}
+
+.calc-buttons span{
+    height:25px;
+    border-radius:5px;
+    background:#1c2140;
+}
+
+/* AI VISUAL */
+.ai-core{
+    position:absolute;
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:
+        radial-gradient(circle,rgba(255,255,255,.9) 0 3%,transparent 4%),
+        radial-gradient(circle,rgba(139,92,246,.8),rgba(34,211,238,.1) 60%,transparent 70%);
+    box-shadow:0 0 80px rgba(139,92,246,.5);
+    animation:pulse 2.5s infinite;
+}
+
+.ai-ring{
+    position:absolute;
+    inset:-25px;
+    border:1px solid rgba(34,211,238,.4);
+    border-radius:50%;
+    animation:spin 7s linear infinite;
+}
+
+.ai-ring.two{
+    inset:-48px;
+    border-color:rgba(139,92,246,.3);
+    animation-direction:reverse;
+    animation-duration:10s;
+}
+
+.ai-lines{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,transparent 49.5%,rgba(34,211,238,.16) 50%,transparent 50.5%),
+        linear-gradient(transparent 49.5%,rgba(139,92,246,.16) 50%,transparent 50.5%);
+}
+
+@keyframes pulse{
+    50%{transform:translate(-50%,-50%) scale(1.08)}
+}
+
+/* PORTAL VISUAL */
+.portal-ui{
+    position:absolute;
+    width:80%;
+    height:175px;
+    left:10%;
+    top:35px;
+    border-radius:16px;
+    background:#111525;
+    border:1px solid rgba(255,255,255,.12);
+    padding:12px;
+}
+
+.portal-top{
+    height:20px;
+    width:45%;
+    border-radius:5px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    margin-bottom:13px;
+}
+
+.portal-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.portal-card{
+    height:45px;
+    border-radius:8px;
+    background:#1b2138;
+}
+
+.portal-table{
+    margin-top:10px;
+    display:grid;
+    gap:5px;
+}
+
+.portal-row{
+    height:9px;
+    border-radius:5px;
+    background:#202744;
+}
+
+/* FOOTBALL VISUAL */
+.football-ui{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),
+        linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:35px 35px;
+}
+
+.trophy{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 0 70px rgba(34,211,238,.35);
+}
+
+/* CONTACT */
+.contact-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:20px;
+}
+
+.contact-info{
+    padding:30px;
+}
+
+.contact-info h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.contact-info>p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.contact-item:last-child{
+    border-bottom:0;
+}
+
+.contact-item .ci{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    color:var(--accent2);
+    background:rgba(34,211,238,.08);
+}
+
+.contact-item small{
+    display:block;
+    color:var(--muted);
+}
+
+.contact-item strong{
+    font-size:14px;
+}
+
+.contact-form{
+    padding:30px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.input-group{
+    margin-bottom:14px;
+}
+
+.input-group label{
+    display:block;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:7px;
+}
+
+.input,
+textarea{
+    width:100%;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
+    color:var(--text);
+    padding:14px;
+    border-radius:13px;
+    outline:none;
+    transition:.2s;
+}
+
+.input:focus,
+textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(139,92,246,.1);
+}
+
+textarea{
+    min-height:145px;
+    resize:vertical;
+}
+
+/* CHALLENGE */
+.challenge{
+    padding:35px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    overflow:hidden;
+    position:relative;
+}
+
+.challenge h3{
+    font-size:27px;
+}
+
+.challenge p{
+    color:var(--muted);
+    margin-top:7px;
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid var(--border);
+    padding:30px 0;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+}
+
+.footer-inner p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.footer-links{
+    display:flex;
+    gap:8px;
+}
+
+/* AI ASSISTANT */
+.ai-button{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:60px;
+    height:60px;
+    border:0;
+    border-radius:20px;
+    display:grid;
+    place-items:center;
+    color:white;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    cursor:pointer;
+    z-index:900;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    transition:.3s;
+}
+
+.ai-button:hover{
+    transform:translateY(-5px) rotate(3deg);
+}
+
+.ai-panel{
+    position:fixed;
+    right:24px;
+    bottom:95px;
+    width:min(380px,calc(100% - 32px));
+    max-height:600px;
+    z-index:899;
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:rgba(10,12,23,.93);
+    backdrop-filter:blur(25px);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+body.light .ai-panel{
+    background:rgba(255,255,255,.94);
+}
+
+.ai-panel.open{
+    display:flex;
+    animation:panelIn .25s ease;
+}
+
+@keyframes panelIn{
+    from{opacity:0;transform:translateY(15px) scale(.97)}
+    to{opacity:1;transform:none}
+}
+
+.ai-head{
+    padding:18px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ai-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.ai-title-icon{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    color:white;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+.ai-head small{
+    color:var(--muted);
+}
+
+.ai-messages{
+    padding:17px;
+    height:310px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.message{
+    max-width:85%;
+    padding:11px 13px;
+    border-radius:14px;
+    font-size:13px;
+}
+
+.message.bot{
+    align-self:flex-start;
+    background:var(--card);
+    border:1px solid var(--border);
+}
+
+.message.user{
+    align-self:flex-end;
+    color:white;
+    background:linear-gradient(135deg,var(--accent),#6366f1);
+}
+
+.suggestions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    padding:0 17px 13px;
+}
+
+.suggestion{
+    border:1px solid var(--border);
+    color:var(--muted);
+    background:var(--card);
+    border-radius:10px;
+    padding:8px 10px;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.suggestion:hover{
+    color:var(--text);
+    border-color:var(--accent);
+}
+
+.ai-input{
+    display:flex;
+    gap:7px;
+    padding:12px;
+    border-top:1px solid var(--border);
+}
+
+.ai-input input{
+    min-width:0;
+    flex:1;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:11px;
+    padding:11px;
+    outline:none;
+}
+
+.ai-send{
+    width:43px;
+    border:0;
+    border-radius:11px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+}
+
+/* THEME PANEL */
+.theme-panel{
+    position:fixed;
+    top:90px;
+    right:20px;
+    width:260px;
+    z-index:950;
+    padding:20px;
+    display:none;
+}
+
+.theme-panel.open{
+    display:block;
+}
+
+.theme-panel h3{
+    margin-bottom:15px;
+}
+
+.theme-label{
+    color:var(--muted);
+    font-size:12px;
+    margin:13px 0 8px;
+}
+
+.theme-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.theme-dot{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.2);
+    cursor:pointer;
+}
+
+.theme-purple{background:#8b5cf6}
+.theme-cyan{background:#06b6d4}
+.theme-green{background:#10b981}
+.theme-pink{background:#ec4899}
+.theme-orange{background:#f97316}
+
+.theme-purple2{background:#7c3aed}
+.theme-blue{background:#3b82f6}
+.theme-red{background:#ef4444}
+.theme-yellow{background:#eab308}
+.theme-teal{background:#14b8a6}
+
+/* GAME MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(10px);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.open{
+    display:flex;
+}
+
+.game-box{
+    width:min(520px,100%);
+    padding:30px;
+    position:relative;
+}
+
+.game-box h2{
+    margin-bottom:8px;
+}
+
+.game-box p{
+    color:var(--muted);
+}
+
+.quiz-question{
+    margin:25px 0 15px;
+    font-size:18px;
+    font-weight:700;
+}
+
+.quiz-options{
+    display:grid;
+    gap:9px;
+}
+
+.quiz-option{
+    padding:13px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:12px;
+    color:var(--text);
+    cursor:pointer;
+    text-align:left;
+}
+
+.quiz-option:hover{
+    border-color:var(--accent);
+}
+
+.close-modal{
+    position:absolute;
+    right:18px;
+    top:18px;
+}
+
+/* REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .nav-links{
+        position:absolute;
+        top:76px;
+        left:4%;
+        width:92%;
+        padding:12px;
+        flex-direction:column;
+        align-items:stretch;
+        background:rgba(10,12,22,.96);
+        border:1px solid var(--border);
+        border-radius:18px;
+        display:none;
+    }
+
+    body.light .nav-links{
+        background:rgba(255,255,255,.97);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:13px;
+    }
+
+    .menu-btn{
+        display:grid;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .profile-wrap{
+        order:-1;
+    }
+
+    .profile-ring{
+        width:280px;
+        height:280px;
+    }
+
+    .services,
+    .skills-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+    section{
+        padding:80px 0;
+    }
+
+    .nav-actions .theme-toggle{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:52px;
+        letter-spacing:-3px;
+    }
+
+    .hero-role{
+        font-size:13px;
+        line-height:1.7;
+    }
+
+    .profile-ring{
+        width:245px;
+        height:245px;
+    }
+
+    .float-one{
+        left:-5px;
+    }
+
+    .float-two{
+        right:-5px;
+    }
+
+    .services,
+    .skills-grid,
+    .projects,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .challenge{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .ai-panel{
+        right:16px;
+        bottom:90px;
+    }
+
+    .ai-button{
+        right:16px;
+        bottom:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <div class="loader-box">
+        <div class="loader-logo">YA</div>
+        <div class="loader-line"><span></span></div>
+    </div>
+</div>
+
+<div class="grid-bg"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+<!-- NAVBAR -->
+<header>
+    <div class="container nav">
+
+        <a href="#home" class="logo">
+            <span class="logo-mark">YA</span>
+            <span>Yussuf AbdulRahmon</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeButton" title="Themes">
+                <i data-lucide="palette"></i>
+            </button>
+
+            <button class="icon-btn theme-toggle" id="modeButton" title="Light / Dark">
+                <i data-lucide="sun-moon"></i>
+            </button>
+
+            <button class="icon-btn menu-btn" id="menuButton" title="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- THEME PANEL -->
+<div class="theme-panel glass" id="themePanel">
+    <h3>Customize Theme</h3>
+
+    <div class="theme-label">Accent Color</div>
+
+    <div class="theme-grid">
+        <button class="theme-dot theme-purple" data-color="#8b5cf6"></button>
+        <button class="theme-dot theme-cyan" data-color="#06b6d4"></button>
+        <button class="theme-dot theme-green" data-color="#10b981"></button>
+        <button class="theme-dot theme-pink" data-color="#ec4899"></button>
+        <button class="theme-dot theme-orange" data-color="#f97316"></button>
+
+        <button class="theme-dot theme-purple2" data-color="#7c3aed"></button>
+        <button class="theme-dot theme-blue" data-color="#3b82f6"></button>
+        <button class="theme-dot theme-red" data-color="#ef4444"></button>
+        <button class="theme-dot theme-yellow" data-color="#eab308"></button>
+        <button class="theme-dot theme-teal" data-color="#14b8a6"></button>
+    </div>
+
+    <div class="theme-label">Display Mode</div>
+
+    <button class="btn btn-secondary" style="width:100%" id="panelModeButton">
+        <i data-lucide="sun-moon"></i>
+        Toggle Light / Dark
+    </button>
+</div>
+
+<!-- HERO -->
+<main id="home">
+
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div class="reveal">
+
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Available for learning opportunities
+            </div>
+
+            <h1>
+                Yussuf<br>
+                <span class="gradient-text">AbdulRahmon.</span>
+            </h1>
+
+            <div class="hero-role">
+                ASPIRING WEB DEVELOPER • WEB DESIGNER • GRAPHICS DESIGNER
+            </div>
+
+            <p>
+                Creative aspiring developer focused on building responsive,
+                interactive and modern digital experiences with web technology
+                and design.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i data-lucide="folder-kanban"></i>
+                    Explore Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    <i data-lucide="send"></i>
+                    Contact Me
+                </a>
+
+                <a href="CV.pdf" class="btn btn-secondary" target="_blank">
+                    <i data-lucide="file-text"></i>
+                    View CV
+                </a>
+            </div>
+
+        </div>
+
+        <div class="profile-wrap reveal">
+
+            <div class="profile-ring">
+                <div class="profile-inner">
+
+                    <!--
+                        PROFILE PHOTO:
+                        Later, replace the content below with:
+
+                        <img src="profile.jpg"
+                             alt="Yussuf AbdulRahMon"
+                             style="width:100%;height:100%;object-fit:cover;">
+
+                        Put profile.jpg in the same folder as index.html.
+                    -->
+
+                    <div class="profile-placeholder">
+                        <strong>YA</strong>
+                        <span>Profile Picture</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="profile-floating float-one">
+                <i data-lucide="code-2"></i>
+                Web Development
+            </div>
+
+            <div class="profile-floating float-two">
+                <i data-lucide="sparkles"></i>
+                Creative Design
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">About Me</div>
+            <h2>Building. Learning. Creating.</h2>
+            <p>
+                A young developer and designer growing through practical
+                projects and modern web technologies.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card glass reveal">
+                <h3>My Profile</h3>
+
+                <p>
+                    I am an aspiring web developer and designer with a growing
+                    foundation in modern web technologies and digital design.
+                    I enjoy creating responsive, interactive and user-friendly
+                    websites while continuously improving my technical skills.
+                </p>
+
+                <br>
+
+                <p>
+                    I started learning coding after completing my JSS3 BECE
+                    examination and have been developing my skills through
+                    practical projects and real-world experimentation.
+                </p>
+            </div>
+
+            <div class="about-card glass reveal">
+                <h3>Education</h3>
+
+                <div class="education">
+
+                    <div class="edu-item">
+                        <strong>Federal Technical College, Yaba</strong>
+                        <span>Senior Secondary School • 2026 – Present</span>
+                    </div>
+
+                    <div class="edu-item">
+                        <strong>Eletu Odibo Junior High School</strong>
+                        <span>2023 – 2026 • Completed</span>
+                    </div>
+
+                    <div class="edu-item">
+                        <strong>Nurul Akwan Model School</strong>
+                        <span>2017 – 2023 • Completed</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PERSONAL INFORMATION -->
+        <div class="personal-section reveal">
+
+            <div class="personal-title">
+                <div class="title-icon">
+                    <i data-lucide="user-round"></i>
+                </div>
+
+                <div>
+                    <h3>Personal Information</h3>
+                </div>
+            </div>
+
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="user"></i>
+                    </div>
+
+                    <div>
+                        <small>Full Name</small>
+                        <strong>Yussuf AbdulRahmon</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="phone"></i>
+                    </div>
+
+                    <div>
+                        <small>Phone Number</small>
+                        <strong>08140500958</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+
+                    <div>
+                        <small>Email Address</small>
+                        <strong>yussufabdulrahmon80@gmail.com</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+
+                    <div>
+                        <small>Location</small>
+                        <strong>Lagos, Nigeria</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+
+                    <div>
+                        <small>Current Status</small>
+                        <strong>Senior Secondary Student</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="school"></i>
+                    </div>
+
+                    <div>
+                        <small>Current School</small>
+                        <strong>Federal Technical College, Yaba</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="briefcase-business"></i>
+                    </div>
+
+                    <div>
+                        <small>Career Interest</small>
+                        <strong>Web Development</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="palette"></i>
+                    </div>
+
+                    <div>
+                        <small>Design Interest</small>
+                        <strong>Software & Digital Design</strong>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="github"></i>
+                    </div>
+
+                    <div>
+                        <small>GitHub</small>
+                        <strong>yussufabdulrahmon80-png</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">What I Do</div>
+            <h2>Creative Digital Services.</h2>
+            <p>
+                Areas I am actively developing through practical projects.
+            </p>
+        </div>
+
+        <div class="services">
+
+            <div class="service glass reveal">
+                <div class="service-icon">
+                    <i data-lucide="code-2"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>
+                    Building responsive websites using HTML, CSS and JavaScript.
+                </p>
+            </div>
+
+            <div class="service glass reveal">
+                <div class="service-icon">
+                    <i data-lucide="layout-template"></i>
+                </div>
+                <h3>Web Design</h3>
+                <p>
+                    Creating modern interfaces with strong visual hierarchy
+                    and responsive layouts.
+                </p>
+            </div>
+
+            <div class="service glass reveal">
+                <div class="service-icon">
+                    <i data-lucide="pen-tool"></i>
+                </div>
+                <h3>Graphics Design</h3>
+                <p>
+                    Exploring creative digital graphics, branding and visual
+                    communication.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">Technical Skills</div>
+            <h2>Tools & Capabilities.</h2>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="file-code-2"></i></div>
+                <div class="skill-text">
+                    <strong>HTML5</strong>
+                    <span>Web Structure</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="palette"></i></div>
+                <div class="skill-text">
+                    <strong>CSS3</strong>
+                    <span>Modern Styling</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="braces"></i></div>
+                <div class="skill-text">
+                    <strong>JavaScript</strong>
+                    <span>Interactive Web</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="smartphone"></i></div>
+                <div class="skill-text">
+                    <strong>Responsive Design</strong>
+                    <span>All Screen Sizes</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="figma"></i></div>
+                <div class="skill-text">
+                    <strong>UI / UX Design</strong>
+                    <span>User Experience</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="image"></i></div>
+                <div class="skill-text">
+                    <strong>Graphics Design</strong>
+                    <span>Digital Creativity</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="mouse-pointer-2"></i></div>
+                <div class="skill-text">
+                    <strong>Landing Pages</strong>
+                    <span>Conversion-Focused Layouts</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="lightbulb"></i></div>
+                <div class="skill-text">
+                    <strong>Problem Solving</strong>
+                    <span>Practical Thinking</span>
+                </div>
+            </div>
+
+            <div class="skill glass reveal">
+                <div class="skill-icon"><i data-lucide="zap"></i></div>
+                <div class="skill-text">
+                    <strong>Interactive Experiences</strong>
+                    <span>Modern Web Experiences</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">Selected Projects</div>
+            <h2>Things I Have Built.</h2>
+            <p>
+                A collection of practical projects demonstrating my growing
+                development and design skills.
+            </p>
+        </div>
+
+        <div class="projects">
+
+            <!-- SMART CALCULATOR -->
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="calc-ui">
+                        <div class="calc-screen">12,480.50</div>
+
+                        <div class="calc-buttons">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="project-body">
+                    <h3>Smart Calculator</h3>
+
+                    <p>
+                        A modern calculator experience designed with scientific
+                        functions, conversions and interactive controls.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            class="btn btn-primary"
+                            href="https://rahmoncal.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            Live Demo
+                        </a>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="https://github.com/yussufabdulrahmon80-png"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- NEUXURA AI -->
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="ai-lines"></div>
+
+                    <div class="ai-core">
+                        <div class="ai-ring"></div>
+                        <div class="ai-ring two"></div>
+                    </div>
+
+                </div>
+
+                <div class="project-body">
+                    <h3>Neuxura AI</h3>
+
+                    <p>
+                        An AI-inspired digital platform focused on a futuristic
+                        interface and interactive user experience.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Web App</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            class="btn btn-primary"
+                            href="https://platform-42.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            Live Demo
+                        </a>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="https://github.com/yussufabdulrahmon80-png"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- NAMS PORTAL -->
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="portal-ui">
+
+                        <div class="portal-top"></div>
+
+                        <div class="portal-cards">
+                            <div class="portal-card"></div>
+                            <div class="portal-card"></div>
+                            <div class="portal-card"></div>
+                        </div>
+
+                        <div class="portal-table">
+                            <div class="portal-row"></div>
+                            <div class="portal-row"></div>
+                            <div class="portal-row"></div>
+                            <div class="portal-row"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-body">
+                    <h3>Nurul Akwan Model School Portal</h3>
+
+                    <p>
+                        A school portal concept for results, student information,
+                        academic management and school-related services.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">School Portal</span>
+                        <span class="tag">Dashboard</span>
+                        <span class="tag">Web App</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            class="btn btn-primary"
+                            href="https://namsportal.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            Live Demo
+                        </a>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="https://github.com/yussufabdulrahmon80-png"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- PRO-X FOOTBALL -->
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="football-ui"></div>
+
+                    <div class="trophy">
+                        <i data-lucide="trophy" size="45"></i>
+                    </div>
+
+                </div>
+
+                <div class="project-body">
+                    <h3>PRO-X Football Arena</h3>
+
+                    <p>
+                        An interactive football experience designed around
+                        matches, competitions, teams and sports information.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Football</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Sports</span>
+                        <span class="tag">Interactive</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            class="btn btn-primary"
+                            href="https://abdulrahmon80.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            Live Demo
+                        </a>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="https://github.com/yussufabdulrahmon80-png"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CHALLENGE -->
+<section>
+    <div class="container">
+
+        <div class="challenge glass reveal">
+
+            <div>
+                <div class="eyebrow">Developer Challenge</div>
+                <h3>Think Like A Developer.</h3>
+                <p>
+                    Test your knowledge with a quick coding challenge.
+                </p>
+            </div>
+
+            <button class="btn btn-primary" id="startGame">
+                <i data-lucide="gamepad-2"></i>
+                Start Challenge
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">Contact</div>
+            <h2>Let's Build Something.</h2>
+            <p>
+                Have a project, learning opportunity or idea?
+                Send a message.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-info glass reveal">
+
+                <h3>Get In Touch</h3>
+
+                <p>
+                    You can reach me through phone, email, WhatsApp or GitHub.
+                </p>
+
+                <div class="contact-item">
+                    <div class="ci">
+                        <i data-lucide="phone"></i>
+                    </div>
+                    <div>
+                        <small>Phone</small>
+                        <strong>08140500958</strong>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="ci">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div>
+                        <small>Email</small>
+                        <strong>yussufabdulrahmon80@gmail.com</strong>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="ci">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div>
+                        <small>Location</small>
+                        <strong>Lagos, Nigeria</strong>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="ci">
+                        <i data-lucide="github"></i>
+                    </div>
+                    <div>
+                        <small>GitHub</small>
+                        <strong>
+                            <a
+                                href="https://github.com/yussufabdulrahmon80-png"
+                                target="_blank">
+                                yussufabdulrahmon80-png
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+
+                <br>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://wa.me/2348140500958"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <i data-lucide="message-circle"></i>
+                    Chat on WhatsApp
+                </a>
+
+            </div>
+
+            <!-- FORMSPREE -->
+            <form
+                class="contact-form glass reveal"
+                action="https://formspree.io/f/xnpqrwle"
+                method="POST">
+
+                <div class="form-row">
+
+                    <div class="input-group">
+                        <label>Your Name</label>
+                        <input
+                            class="input"
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Your Email</label>
+                        <input
+                            class="input"
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Subject</label>
+                    <input
+                        class="input"
+                        type="text"
+                        name="subject"
+                        placeholder="Project / Opportunity"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label>Message</label>
+                    <textarea
+                        name="message"
+                        placeholder="Write your message..."
+                        required></textarea>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i data-lucide="send"></i>
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-inner">
+
+        <p>
+            © <span id="year"></span> Yussuf AbdulRahmon. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+            <a
+                class="icon-btn"
+                href="https://github.com/yussufabdulrahmon80-png"
+                target="_blank"
+                title="GitHub">
+                <i data-lucide="github"></i>
+            </a>
+
+            <a
+                class="icon-btn"
+                href="https://wa.me/2348140500958"
+                target="_blank"
+                title="WhatsApp">
+                <i data-lucide="message-circle"></i>
+            </a>
+
+        </div>
+
+    </div>
+</footer>
+
+<!-- AI ASSISTANT BUTTON -->
+<button class="ai-button" id="aiButton" title="Portfolio Assistant">
+    <i data-lucide="bot"></i>
+</button>
+
+<!-- AI ASSISTANT -->
+<div class="ai-panel" id="aiPanel">
+
+    <div class="ai-head">
+
+        <div class="ai-title">
+            <div class="ai-title-icon">
+                <i data-lucide="sparkles"></i>
+            </div>
+
+            <div>
+                <strong>Yussuf AI Assistant</strong>
+                <small>Portfolio Guide</small>
+            </div>
+        </div>
+
+        <button class="icon-btn" id="closeAI">
+            <i data-lucide="x"></i>
+        </button>
+
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+
+        <div class="message bot">
+            Hello! I'm Yussuf's portfolio assistant.
+            Ask me about his skills, projects, education or contact details.
+        </div>
+
+    </div>
+
+    <div class="suggestions">
+
+        <button class="suggestion" data-question="Who is Yussuf?">
+            Who is Yussuf?
+        </button>
+
+        <button class="suggestion" data-question="What projects has he built?">
+            Projects
+        </button>
+
+        <button class="suggestion" data-question="What are his skills?">
+            Skills
+        </button>
+
+        <button class="suggestion" data-question="How can I contact him?">
+            Contact
+        </button>
+
+    </div>
+
+    <div class="ai-input">
+
+        <input
+            type="text"
+            id="aiInput"
+            placeholder="Ask something...">
+
+        <button class="ai-send" id="aiSend">
+            <i data-lucide="send"></i>
+        </button>
+
+    </div>
+
+</div>
+
+<!-- GAME MODAL -->
+<div class="modal" id="gameModal">
+
+    <div class="game-box glass">
+
+        <button class="icon-btn close-modal" id="closeGame">
+            <i data-lucide="x"></i>
+        </button>
+
+        <div class="eyebrow">Developer Challenge</div>
+
+        <h2>Quick Coding Quiz</h2>
+
+        <p id="gameStatus">
+            Answer the questions and test your knowledge.
+        </p>
+
+        <div class="quiz-question" id="quizQuestion"></div>
+
+        <div class="quiz-options" id="quizOptions"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* LUCIDE */
+lucide.createIcons();
+
+/* LOADER */
+window.addEventListener("load",()=>{
+    setTimeout(()=>{
+        document.getElementById("loader").classList.add("hide");
+    },700);
+});
+
+/* YEAR */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* MOBILE MENU */
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click",()=>{
+    navLinks.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        navLinks.classList.remove("open");
+    });
+});
+
+/* DARK / LIGHT */
+const modeButton = document.getElementById("modeButton");
+const panelModeButton = document.getElementById("panelModeButton");
+
+function toggleMode(){
+    document.body.classList.toggle("light");
+
+    localStorage.setItem(
+        "portfolio-mode",
+        document.body.classList.contains("light") ? "light" : "dark"
+    );
+}
+
+modeButton.addEventListener("click",toggleMode);
+panelModeButton.addEventListener("click",toggleMode);
+
+if(localStorage.getItem("portfolio-mode")==="light"){
+    document.body.classList.add("light");
+}
+
+/* THEME PANEL */
+const themeButton = document.getElementById("themeButton");
+const themePanel = document.getElementById("themePanel");
+
+themeButton.addEventListener("click",()=>{
+    themePanel.classList.toggle("open");
+});
+
+document.querySelectorAll(".theme-dot").forEach(dot=>{
+    dot.addEventListener("click",()=>{
+
+        const color = dot.dataset.color;
+
+        document.documentElement.style.setProperty(
+            "--accent",
+            color
+        );
+
+        localStorage.setItem("portfolio-accent",color);
+    });
+});
+
+const savedAccent = localStorage.getItem("portfolio-accent");
+
+if(savedAccent){
+    document.documentElement.style.setProperty(
+        "--accent",
+        savedAccent
+    );
+}
+
+/* CLOSE THEME PANEL OUTSIDE */
+document.addEventListener("click",(e)=>{
+    if(
+        !themePanel.contains(e.target) &&
+        !themeButton.contains(e.target)
+    ){
+        themePanel.classList.remove("open");
+    }
+});
+
+/* REVEAL */
+const observer = new IntersectionObserver(
+    entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+            }
+        });
+    },
+    {threshold:.08}
+);
+
+document.querySelectorAll(".reveal").forEach(el=>{
+    observer.observe(el);
+});
+
+/* AI ASSISTANT */
+const aiButton = document.getElementById("aiButton");
+const aiPanel = document.getElementById("aiPanel");
+const closeAI = document.getElementById("closeAI");
+const aiMessages = document.getElementById("aiMessages");
+const aiInput = document.getElementById("aiInput");
+const aiSend = document.getElementById("aiSend");
+
+aiButton.addEventListener("click",()=>{
+    aiPanel.classList.toggle("open");
+});
+
+closeAI.addEventListener("click",()=>{
+    aiPanel.classList.remove("open");
+});
+
+function addMessage(text,type){
+
+    const div = document.createElement("div");
+
+    div.className = "message " + type;
+
+    div.textContent = text;
+
+    aiMessages.appendChild(div);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+function assistantAnswer(question){
+
+    const q = question.toLowerCase();
+
+    if(
+        q.includes("who") ||
+        q.includes("about") ||
+        q.includes("yussuf")
+    ){
+        return "Yussuf AbdulRahmon is an aspiring web developer, web designer and graphics designer based in Lagos, Nigeria. He is currently developing his skills through practical projects.";
+    }
+
+    if(
+        q.includes("project") ||
+        q.includes("built")
+    ){
+        return "Yussuf's featured projects include Smart Calculator, Neuxura AI, Nurul Akwan Model School Portal and PRO-X Football Arena.";
+    }
+
+    if(
+        q.includes("skill") ||
+        q.includes("technology") ||
+        q.includes("tech")
+    ){
+        return "His skills include HTML5, CSS3, JavaScript, responsive web design, UI/UX design, graphics design, landing page design, web development and interactive web experiences.";
+    }
+
+    if(
+        q.includes("contact") ||
+        q.includes("email") ||
+        q.includes("phone") ||
+        q.includes("reach")
+    ){
+        return "You can contact Yussuf at yussufabdulrahmon80@gmail.com or 08140500958. You can also use the WhatsApp button or contact form on this website.";
+    }
+
+    if(
+        q.includes("school") ||
+        q.includes("education")
+    ){
+        return "Yussuf currently attends Federal Technical College, Yaba. He previously attended Eletu Odibo Junior High School and Nurul Akwan Model School.";
+    }
+
+    return "I can tell you about Yussuf's profile, education, skills, projects and contact information. Try asking one of those.";
+}
+
+function askAssistant(question){
+
+    if(!question.trim()) return;
+
+    addMessage(question,"user");
+
+    aiInput.value = "";
+
+    const typing = document.createElement("div");
+
+    typing.className = "message bot";
+    typing.textContent = "Thinking...";
+
+    aiMessages.appendChild(typing);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+
+    setTimeout(()=>{
+
+        typing.remove();
+
+        addMessage(
+            assistantAnswer(question),
+            "bot"
+        );
+
+    },650);
+}
+
+aiSend.addEventListener("click",()=>{
+    askAssistant(aiInput.value);
+});
+
+aiInput.addEventListener("keydown",e=>{
+    if(e.key==="Enter"){
+        askAssistant(aiInput.value);
+    }
+});
+
+document.querySelectorAll(".suggestion").forEach(button=>{
+    button.addEventListener("click",()=>{
+        askAssistant(button.dataset.question);
+    });
+});
+
+/* QUIZ */
+const gameModal = document.getElementById("gameModal");
+const startGame = document.getElementById("startGame");
+const closeGame = document.getElementById("closeGame");
+const quizQuestion = document.getElementById("quizQuestion");
+const quizOptions = document.getElementById("quizOptions");
+const gameStatus = document.getElementById("gameStatus");
+
+const questions = [
+
+    {
+        q:"Which language is mainly used to add interactivity to web pages?",
+        options:["HTML","CSS","JavaScript","SQL"],
+        answer:"JavaScript"
+    },
+
+    {
+        q:"Which HTML element is commonly used for the largest heading?",
+        options:["<h1>","<head>","<title>","<header>"],
+        answer:"<h1>"
+    },
+
+    {
+        q:"Which technology is used to style HTML pages?",
+        options:["CSS","JavaScript","Node","SQL"],
+        answer:"CSS"
+    },
+
+    {
+        q:"What does HTML stand for?",
+        options:[
+            "HyperText Markup Language",
+            "HighText Machine Language",
+            "Hyper Tool Multi Language",
+            "Home Tool Markup Language"
+        ],
+        answer:"HyperText Markup Language"
+    },
+
+    {
+        q:"Which symbol is commonly used to select a class in CSS?",
+        options:["#",".","@","$"],
+        answer:"."
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion(){
+
+    if(currentQuestion >= questions.length){
+
+        quizQuestion.textContent =
+            "Challenge Complete!";
+
+        quizOptions.innerHTML = "";
+
+        gameStatus.textContent =
+            `Your score: ${score}/${questions.length}`;
+
+        const restart = document.createElement("button");
+
+        restart.className = "btn btn-primary";
+        restart.innerHTML =
+            '<i data-lucide="rotate-ccw"></i> Play Again';
+
+        restart.addEventListener("click",startQuiz);
+
+        quizOptions.appendChild(restart);
+
+        lucide.createIcons();
+
+        return;
+    }
+
+    const item = questions[currentQuestion];
+
+    quizQuestion.textContent =
+        `${currentQuestion + 1}. ${item.q}`;
+
+    quizOptions.innerHTML = "";
+
+    item.options.forEach(option=>{
+
+        const button = document.createElement("button");
+
+        button.className = "quiz-option";
+        button.textContent = option;
+
+        button.addEventListener("click",()=>{
+
+            if(option === item.answer){
+                score++;
+            }
+
+            currentQuestion++;
+
+            loadQuestion();
+
+        });
+
+        quizOptions.appendChild(button);
+
+    });
+
+    gameStatus.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+}
+
+function startQuiz(){
+
+    currentQuestion = 0;
+    score = 0;
+
+    gameModal.classList.add("open");
+
+    loadQuestion();
+}
+
+startGame.addEventListener("click",startQuiz);
+
+closeGame.addEventListener("click",()=>{
+    gameModal.classList.remove("open");
+});
+
+/* CLOSE MODAL BY CLICKING BACKGROUND */
+gameModal.addEventListener("click",e=>{
+    if(e.target === gameModal){
+        gameModal.classList.remove("open");
+    }
+});
+
+/* CLOSE ESC */
+document.addEventListener("keydown",e=>{
+
+    if(e.key === "Escape"){
+
+        aiPanel.classList.remove("open");
+        themePanel.classList.remove("open");
+        gameModal.classList.remove("open");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
